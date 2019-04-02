@@ -24,5 +24,5 @@ var cmdProjectVariable = &cobra.Command{
 }
 
 func init() {
-	cmdUser.AddCommand(cmdProjectVariable)
+	cmdProject.AddCommand(cmdProjectVariable)
 }
