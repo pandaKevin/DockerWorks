@@ -47,7 +47,7 @@ var (
 )
 
 type Opts struct {
-	URL            string
+	APIURL         string
 	Token          string
 	SkipVerify     bool
 	Oauth2ClientID string
@@ -57,7 +57,7 @@ type Opts struct {
 type Client struct {
 	client         *gitea.Client
 	httpClient     *http.Client
-	URL            string
+	APIURL         string
 	oauth2ClientID string
 	oauth2Secret   string
 }
@@ -103,13 +103,13 @@ func New(opts Opts) (*Client, error) {
 	}
 	httpClient := &http.Client{Transport: transport}
 
-	client := gitea.NewClient(opts.URL, opts.Token)
+	client := gitea.NewClient(opts.APIURL, opts.Token)
 	client.SetHTTPClient(httpClient)
 
 	return &Client{
 		client:         client,
 		httpClient:     httpClient,
-		URL:            opts.URL,
+		APIURL:         opts.APIURL,
 		oauth2ClientID: opts.Oauth2ClientID,
 		oauth2Secret:   opts.Oauth2Secret,
 	}, nil
@@ -121,8 +121,8 @@ func (c *Client) oauth2Config(callbackURL string) *oauth2.Config {
 		ClientSecret: c.oauth2Secret,
 		Scopes:       GiteaOauth2Scopes,
 		Endpoint: oauth2.Endpoint{
-			AuthURL:  fmt.Sprintf("%s/login/oauth/authorize", c.URL),
-			TokenURL: fmt.Sprintf("%s/login/oauth/access_token", c.URL),
+			AuthURL:  fmt.Sprintf("%s/login/oauth/authorize", c.APIURL),
+			TokenURL: fmt.Sprintf("%s/login/oauth/access_token", c.APIURL),
 		},
 		RedirectURL: callbackURL,
 	}
@@ -156,7 +156,7 @@ func (c *Client) LoginPassword(username, password, tokenName string) (string, er
 	var accessToken string
 
 	tokens := make([]*gitea.AccessToken, 0, 10)
-	req, err := http.NewRequest("GET", c.URL+"/api/v1"+fmt.Sprintf("/users/%s/tokens", username), nil)
+	req, err := http.NewRequest("GET", c.APIURL+"/api/v1"+fmt.Sprintf("/users/%s/tokens", username), nil)
 	if err != nil {
 		return "", err
 	}
