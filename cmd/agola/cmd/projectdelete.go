@@ -34,7 +34,7 @@ var cmdProjectDelete = &cobra.Command{
 }
 
 type projectDeleteOptions struct {
-	projectRef string
+	ref string
 }
 
 var projectDeleteOpts projectDeleteOptions
@@ -42,9 +42,9 @@ var projectDeleteOpts projectDeleteOptions
 func init() {
 	flags := cmdProjectDelete.Flags()
 
-	flags.StringVar(&projectDeleteOpts.projectRef, "project", "", "project id or full path")
+	flags.StringVar(&projectDeleteOpts.ref, "ref", "", "project path or id")
 
-	if err := cmdProjectDelete.MarkFlagRequired("project"); err != nil {
+	if err := cmdProjectDelete.MarkFlagRequired("ref"); err != nil {
 		log.Fatal(err)
 	}
 
@@ -56,7 +56,7 @@ func projectDelete(cmd *cobra.Command, args []string) error {
 
 	log.Infof("deleting project")
 
-	if _, err := gwclient.DeleteProject(context.TODO(), projectDeleteOpts.projectRef); err != nil {
+	if _, err := gwclient.DeleteProject(context.TODO(), projectDeleteOpts.ref); err != nil {
 		return errors.Errorf("failed to delete project: %w", err)
 	}
 
