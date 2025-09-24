@@ -1,5 +1,27 @@
 ## Changelog
 
+### v0.11.0
+
+- gateway: simplify mux configuration (@sgotti)                                        [#551](https://github.com/agola-io/agola/pull/551)
+- *: update dependencies (@sgotti)                                                     [#550](https://github.com/agola-io/agola/pull/550)
+- *: update to go 1.25 (@sgotti)                                                       [#549](https://github.com/agola-io/agola/pull/549)
+- Update to golangci-lint v2.4.0 (@sgotti)                                             [#548](https://github.com/agola-io/agola/pull/548)
+- *: update gorilla CSRF version (@sgotti)                                             [#547](https://github.com/agola-io/agola/pull/547)
+- config: validate allowed origins (@sgotti)                                           [#546](https://github.com/agola-io/agola/pull/546)
+- *: update gotests.tool to latest version (@sgotti)                                   [#545](https://github.com/agola-io/agola/pull/545)
+- *: update to go 1.24 (@sgotti)                                                       [#544](https://github.com/agola-io/agola/pull/544)
+- Update to golangci-lint v2.1.6 (@sgotti)                                             [#543](https://github.com/agola-io/agola/pull/543)
+- examples: add missing web config for notification service (@sgotti)                  [#542](https://github.com/agola-io/agola/pull/542)
+- *: update dependencies (@sgotti)                                                     [#539](https://github.com/agola-io/agola/pull/539)
+- *: use log Msg when passing a string. (@sgotti)                                      [#538](https://github.com/agola-io/agola/pull/538)
+- errors: add WithAPIErrorMsgf (@sgotti)                                               [#537](https://github.com/agola-io/agola/pull/537)
+- *: update to go 1.23 (@sgotti)                                                       [#535](https://github.com/agola-io/agola/pull/535)
+- errors: add WithWrapperErrorMsgf (@sgotti)                                           [#536](https://github.com/agola-io/agola/pull/536)
+- *: explicitly create services local directories (@sgotti)                            [#534](https://github.com/agola-io/agola/pull/534)
+- services/config: check valid sqlite3 db connstring (@sgotti)                         [#533](https://github.com/agola-io/agola/pull/533)
+- services/config: fix db config validation (@sgotti)                                  [#532](https://github.com/agola-io/agola/pull/532)
+- gateway: add detailed errors to get project response (@alessandro-sorint)            [#530](https://github.com/agola-io/agola/pull/530)
+
 ### v0.10.0
 
 - gateway: unify/improve handling of authenticated user (@sgotti)                      [#525](https://github.com/agola-io/agola/pull/525)
